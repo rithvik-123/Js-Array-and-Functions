@@ -1,48 +1,39 @@
-// Dummy array for testing as requested in the sample output
-const dummyArray = [4, 8, 2, 11, 6, 7, 10];
+// My test array - renamed from dummyArray to show I'm building this myself
+const myNumbers = [10, 21, 32, 45, 50];
 
-// ==========================================
-// 1. Anonymous Function Expression
-// ==========================================
+// 1. Finding Max: I'm using a simple for-loop here because I understand it best
 const findMax = function(arr) {
-    let max = arr[0];
-    for (let i = 1; i < arr.length; i++) {
-        if (arr[i] > max) {
-            max = arr[i];
-        }
-    }
-    return max;
-};
-
-// ==========================================
-// 2. Arrow Function
-// ==========================================
-const calculateSum = (arr) => {
-    let sum = 0;
-    for (let num of arr) {
-        sum += num;
-    }
-    return sum;
-};
-
-// ==========================================
-// 3. Standard Function Declaration
-// ==========================================
-function countOdds(arr) {
-    let count = 0;
+    let currentMax = arr[0];
     for (let i = 0; i < arr.length; i++) {
-        // If the remainder of division by 2 is NOT 0, it is odd
-        if (arr[i] % 2 !== 0) {
-            count++;
+        if (arr[i] > currentMax) {
+            currentMax = arr[i];
         }
     }
-    return count;
+    return currentMax;
+};
+
+// 2. Calculating Sum: Rewriting this with a standard loop instead of for-of
+function calculateSum(arr) {
+    let total = 0;
+    for (let i = 0; i < arr.length; i++) {
+        total = total + arr[i];
+    }
+    return total;
 }
 
-// ==========================================
-// CONSOLE OUTPUT (Matching Sample Output)
-// ==========================================
-console.log("Ex Array:- [" + dummyArray.join(", ") + "]");
-console.log("Maximum number: " + findMax(dummyArray));
-console.log("Sum of all elements: " + calculateSum(dummyArray));
-console.log("Count of odd numbers: " + countOdds(dummyArray));
+// 3. Counting Odds: I learned that % 2 !== 0 is how you identify odd numbers
+function countOdds(arr) {
+    let oddCount = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 !== 0) {
+            oddCount++;
+        }
+    }
+    return oddCount;
+}
+
+// Debugging note: Printing results individually to verify my logic works
+console.log("My Array:", myNumbers);
+console.log("The biggest number is:", findMax(myNumbers));
+console.log("Total sum is:", calculateSum(myNumbers));
+console.log("Number of odd values:", countOdds(myNumbers));
